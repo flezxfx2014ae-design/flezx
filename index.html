@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benim Damlam 🖤</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:radial-gradient(ellipse at top,#29152d,#090909 70%);
+ color:white;
+ font-family:Arial,sans-serif;
+ text-align:center;
+ overflow-x:hidden;
+}
+.container{
+ max-width:680px;
+ margin:auto;
+ padding:30px 16px 50px;
+}
+h1{
+ color:#f2c7ff;
+ font-size:39px;
+ text-shadow:0 0 20px #b85bd0;
+}
+.subtitle{color:#d7b6e2;font-size:17px}
+.card{
+ background:rgba(255,255,255,.055);
+ border:1px solid #71447b;
+ border-radius:20px;
+ padding:22px;
+ margin:22px 0;
+ box-shadow:0 0 22px #321638;
+}
+h2{color:#e9b8ff}
+p{line-height:1.8;font-size:17px}
+button{
+ border:0;
+ border-radius:30px;
+ padding:14px 23px;
+ margin:10px;
+ background:linear-gradient(90deg,#713b80,#bd70c9);
+ color:white;
+ font-weight:bold;
+ font-size:16px;
+ cursor:pointer;
+}
+button:active{transform:scale(.95)}
+.hidden{display:none}
+.heart{
+ font-size:75px;
+ color:#090909;
+ text-shadow:0 0 15px #d58aff;
+ animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+ 50%{transform:scale(1.15)}
+}
+
+/* Detaylı siyah gül */
+.rose{
+ width:180px;
+ height:240px;
+ margin:20px auto;
+ position:relative;
+ cursor:pointer;
+ transform-origin:bottom center;
+ animation:sway 4s ease-in-out infinite;
+ transition:filter .4s,transform .4s;
+}
+.rose:hover{
+ filter:drop-shadow(0 0 9px white)
+        drop-shadow(0 0 22px #c77bff);
+ transform:scale(1.09);
+}
+.flower{
+ position:absolute;
+ width:112px;
+ height:100px;
+ top:8px;
+ left:34px;
+}
+.petal{
+ position:absolute;
+ background:radial-gradient(ellipse at 35% 25%,#393939,#090909 60%,#000);
+ border:1px solid #444;
+ box-shadow:inset 0 0 9px #555;
+}
+.p1{width:58px;height:70px;left:27px;top:0;border-radius:50% 50% 35% 35%;transform:rotate(0deg)}
+.p2{width:55px;height:66px;left:4px;top:17px;border-radius:55% 45% 45% 55%;transform:rotate(-35deg)}
+.p3{width:55px;height:66px;right:4px;top:17px;border-radius:45% 55% 55% 45%;transform:rotate(35deg)}
+.p4{width:62px;height:65px;left:0;top:37px;border-radius:50% 35% 55% 45%;transform:rotate(-18deg)}
+.p5{width:62px;height:65px;right:0;top:37px;border-radius:35% 50% 45% 55%;transform:rotate(18deg)}
+.p6{width:55px;height:52px;left:28px;top:36px;border-radius:50%;background:radial-gradient(circle,#000,#171717)}
+.p7{width:34px;height:38px;left:39px;top:42px;border-radius:50%;background:#020202;box-shadow:inset 0 0 8px #333}
+.stem{
+ position:absolute;
+ width:7px;
+ height:133px;
+ top:91px;
+ left:87px;
+ background:linear-gradient(90deg,#123c1b,#4c9a45,#17451f);
+ border-radius:10px;
+}
+.leaf{
+ position:absolute;
+ width:60px;
+ height:31px;
+ background:linear-gradient(135deg,#80c45c,#246b2c,#0e3b19);
+ border-radius:100% 0 100% 0;
+ border:1px solid #70a85a;
+}
+.leaf:after{
+ content:"";
+ position:absolute;
+ width:85%;
+ height:1px;
+ background:#b1d68a;
+ top:50%;
+ left:5%;
+ transform:rotate(-18deg);
+}
+.leaf.left{top:133px;left:27px;transform:rotate(12deg)}
+.leaf.right{top:163px;right:23px;transform:rotate(190deg)}
+.thorn{
+ position:absolute;
+ width:0;height:0;
+ border-top:5px solid transparent;
+ border-bottom:5px solid transparent;
+ border-right:10px solid #548c3b;
+ left:79px;
+}
+.t1{top:122px}
+.t2{top:163px;left:94px}
+@keyframes sway{
+ 0%,100%{transform:rotate(-3deg)}
+ 50%{transform:rotate(3deg)}
+}
+
+/* Kalp patlaması */
+.heart-pop{
+ position:fixed;
+ z-index:9999;
+ pointer-events:none;
+ color:#ff9be8;
+ font-size:23px;
+ animation:heartBurst 1.1s ease-out forwards;
+}
+@keyframes heartBurst{
+ 0%{opacity:1;transform:translate(0,0) scale(.5)}
+ 100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.8)}
+}
+
+/* Uçuşan kalpler */
+.floating{
+ position:fixed;
+ bottom:-30px;
+ z-index:-1;
+ pointer-events:none;
+ animation:floatUp linear infinite;
+ opacity:.8;
+}
+@keyframes floatUp{
+ from{transform:translateY(0) rotate(0deg);opacity:0}
+ 15%{opacity:.8}
+ to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+footer{
+ margin-top:45px;
+ color:#d8b2e3;
+ letter-spacing:3px;
+ font-size:14px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Benim Damlam 🖤</h1>
+<p class="subtitle">Kalbimin en güzel köşesi sensin...</p>
+
+<div class="rose" onclick="kalpPatlat(this)">
+ <div class="flower">
+  <div class="petal p1"></div>
+  <div class="petal p2"></div>
+  <div class="petal p3"></div>
+  <div class="petal p4"></div>
+  <div class="petal p5"></div>
+  <div class="petal p6"></div>
+  <div class="petal p7"></div>
+ </div>
+ <div class="stem"></div>
+ <div class="leaf left"></div>
+ <div class="leaf right"></div>
+ <div class="thorn t1"></div>
+ <div class="thorn t2"></div>
+</div>
+
+<div class="heart">♥</div>
+
+<div class="card">
+ <h2>Biricik Damlam</h2>
+ <p>
+ Sen benim için çok özelsin. Gülüşün, sesin ve varlığın
+ hayatıma güzellik katıyor. İyi ki varsın.
+ </p>
+</div>
+
+<div class="card">
+ <h2>Sana söylemek istediklerim</h2>
+ <p>
+ Sen benim en güzel tesadüfüm, en güzel düşüncem
+ ve en kıymetli insanlarımdan birisin.
+ </p>
+ <p>
+ Bir siyah gül kadar özel, bir yıldız kadar güzelsin. 🖤
+ </p>
+</div>
+
+<div class="card">
+ <h2>Özür dilerim...</h2>
+ <p>
+ Seni üzdüysem gerçekten üzgünüm. Kalbini kırmak istemezdim.
+ Keşke her şeyi daha güzel anlatabilseydim.
+ Benim için çok değerlisin Damla.
+ </p>
+ <button onclick="mesajAc()">Sana bir mesajım var</button>
+ <p id="sorry" class="hidden">
+ Ne olursa olsun seni üzmek istemem.
+ Umarım beni affedersin. 🖤
+ </p>
+</div>
+
+<div class="card">
+ <h2>Küçük bir sürpriz</h2>
+ <button onclick="surprise()">Sürprizi aç 🖤</button>
+ <p id="surpriseText" class="hidden">
+ İyi ki varsın benim Damlam! 🌹
+ </p>
+</div>
+
+<div class="rose" onclick="kalpPatlat(this)">
+ <div class="flower">
+  <div class="petal p1"></div>
+  <div class="petal p2"></div>
+  <div class="petal p3"></div>
+  <div class="petal p4"></div>
+  <div class="petal p5"></div>
+  <div class="petal p6"></div>
+  <div class="petal p7"></div>
+ </div>
+ <div class="stem"></div>
+ <div class="leaf left"></div>
+ <div class="leaf right"></div>
+ <div class="thorn t1"></div>
+ <div class="thorn t2"></div>
+</div>
+
+<footer>HAZIRLAYAN: FLEZX</footer>
+</div>
+
+<script>
+function kalpPatlat(gul){
+ const rect=gul.getBoundingClientRect();
+ for(let i=0;i<12;i++){
+  const kalp=document.createElement("span");
+  kalp.className="heart-pop";
+  kalp.textContent="♥";
+  kalp.style.left=(rect.left+rect.width/2)+"px";
+  kalp.style.top=(rect.top+rect.height/2)+"px";
+  kalp.style.setProperty("--x",(Math.random()*180-90)+"px");
+  kalp.style.setProperty("--y",(Math.random()*-180-20)+"px");
+  document.body.appendChild(kalp);
+  setTimeout(()=>kalp.remove(),1100);
+ }
+}
+function mesajAc(){
+ document.getElementById("sorry").classList.toggle("hidden");
+}
+function surprise(){
+ document.getElementById("surpriseText").classList.toggle("hidden");
+}
+const symbols=["🖤","♥","✦"];
+for(let i=0;i<22;i++){
+ const el=document.createElement("div");
+ el.className="floating";
+ el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+ el.style.left=Math.random()*100+"vw";
+ el.style.animationDelay=Math.random()*10+"s";
+ el.style.animationDuration=(7+Math.random()*7)+"s";
+ el.style.fontSize=(14+Math.random()*20)+"px";
+ document.body.appendChild(el);
+}
+</script>
+</body>
+</html>
